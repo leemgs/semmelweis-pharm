@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko" class="locked">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="세멜바이즈 약학대학 5년 유학비용 및 현금 확보 계획 계산기">
+  <title>유학비용 | Semmelweis Pharm Guide</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="auth-overlay">
+    <form class="auth-box" id="auth-form">
+      <div class="lock">✦</div><h1>비공개 가이드</h1>
+      <p>이 페이지는 초대받은 사용자를 위한 정보 공간입니다.</p>
+      <label for="access-code">접속 코드</label>
+      <input id="access-code" type="password" autocomplete="current-password" required placeholder="접속 코드를 입력하세요">
+      <button class="btn" type="submit">가이드 입장</button>
+      <p class="auth-error" role="alert"></p>
+      <p class="auth-note">※ 정적 사이트의 간단한 접근 제한으로, 민감정보 보관 용도가 아닙니다.</p>
+    </form>
+  </div>
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="주요 메뉴">
+      <a class="brand" href="index.html"><span class="brand-mark">S</span>SEMMELWEIS PHARM GUIDE</a>
+      <button class="menu-btn" aria-label="메뉴 열기">☰</button><div class="nav-links" data-nav></div>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="page-hero"><div class="container">
+      <span class="eyebrow">FUNDING PLAN · 2026–2031</span>
+      <h1>5년의 비용을<br>지금부터 준비하기</h1>
+      <p class="lede">업로드된 비용표의 환율·학비·월세·생활비 범위를 출발점으로 만든 현금 확보 계획입니다. 실제 환율과 생활 계획을 입력하면 학년·학기·월 단위 예상액이 바로 바뀝니다.</p>
+    </div></section>
+    <div class="container content-layout">
+      <aside class="side-nav"><a href="#calculator">계산 조건</a><a href="#yearly">학년·연도별</a><a href="#semester">학기별</a><a href="#monthly">월별</a><a href="#assumptions">산정 기준</a></aside>
+      <article>
+        <section id="calculator" class="article-section">
+          <span class="tag">EDITABLE PLAN</span><h2>우리 집의 가정으로 다시 계산</h2>
+          <p>아래 값은 모두 수정할 수 있습니다. 생활비는 월세와 월 생활자금을 합한 범위로 입력하고, 초기 정착비에는 보증금·중개비·필수 물품처럼 첫해에만 필요한 현금을 넣으세요.</p>
+          <form id="cost-form" class="cost-controls">
+            <div class="cost-field"><label for="usdKrw">USD 환율</label><div><input id="usdKrw" name="usdKrw" type="number" min="1" step="1" value="1465">원</div></div>
+            <div class="cost-field"><label for="tuitionUsd">학기 등록금</label><div><input id="tuitionUsd" name="tuitionUsd" type="number" min="0" step="10" value="6620">USD</div></div>
+            <div class="cost-field"><label for="annualInflation">연 물가상승률</label><div><input id="annualInflation" name="annualInflation" type="number" min="0" max="30" step="0.5" value="3">%</div></div>
+            <div class="cost-field"><label for="monthlyMin">월 생활비 최소</label><div><input id="monthlyMin" name="monthlyMin" type="number" min="0" step="10000" value="3000000">원</div></div>
+            <div class="cost-field"><label for="monthlyMax">월 생활비 최대</label><div><input id="monthlyMax" name="monthlyMax" type="number" min="0" step="10000" value="3500000">원</div></div>
+            <div class="cost-field"><label for="initialSetup">초기 정착비</label><div><input id="initialSetup" name="initialSetup" type="number" min="0" step="10000" value="5000000">원</div></div>
+          </form>
+          <button id="reset-costs" class="btn secondary" type="button">기본값으로 초기화</button>
+          <div class="cost-summary" aria-live="polite">
+            <div class="cost-stat"><span>5년 최소 예상</span><strong id="total-min">–</strong></div>
+            <div class="cost-stat"><span>5년 최대 예상</span><strong id="total-max">–</strong></div>
+            <div class="cost-stat"><span>60개월 균등 확보 목표</span><strong id="monthly-target">–</strong></div>
+          </div>
+          <p id="calculated-at" class="source-note"></p>
+        </section>
+        <nav class="table-tabs" aria-label="비용표 바로가기"><a href="#yearly">학년·연도별</a><a href="#semester">학기별</a><a href="#monthly">월별 60개월</a></nav>
+        <section id="yearly" class="article-section"><h2>학년·연도별 자금 계획</h2><div class="table-wrap"><table><thead><tr><th>학년</th><th>학년도</th><th>연 등록금</th><th>재료비</th><th>12개월 생활비</th><th>초기 정착</th><th>연간 합계</th></tr></thead><tbody id="yearly-body"></tbody></table></div></section>
+        <section id="semester" class="article-section"><h2>학기별 확보 목표</h2><p>각 학기는 현금흐름 계획을 위해 6개월로 나눴습니다. 등록금은 학기 시작 전 납부 시점을 고려해 별도 확보하세요.</p><div class="table-wrap"><table><thead><tr><th>학기</th><th>학년도</th><th>등록금</th><th>재료비</th><th>6개월 생활비</th><th>학기 합계</th></tr></thead><tbody id="semester-body"></tbody></table></div></section>
+        <section id="monthly" class="article-section"><h2>월별 60개월 생활자금</h2><p>학비·재료비·초기 정착비를 제외한 생활비 표입니다. 매월 실제 지출을 기록하고 다음 학기 예상치를 조정하세요.</p><div class="table-wrap"><table><thead><tr><th>학년</th><th>학년도</th><th>월</th><th>계획 학기</th><th>월 생활비 범위</th></tr></thead><tbody id="monthly-body"></tbody></table></div></section>
+        <section id="assumptions" class="article-section"><h2>산정 기준과 사용 원칙</h2><ul class="assumption-list"><li>기본 환율 1,465원/USD는 업로드된 2026년 7월 비용표의 적용 환율입니다.</li><li>월 생활비 기본 범위는 비용표의 월세 120–150만원과 월 생활자금 180–200만원을 합산했습니다.</li><li>학기 등록금은 업로드된 신입생 공식 안내의 약학대학 USD 6,620을 사용했습니다. 첫 송금액처럼 보증금이 차감된 잔액과 혼동하지 마세요.</li><li>재료비는 업로드 자료를 따라 1학년 없음, 2학년 연 USD 800, 3–5학년 연 USD 1,600으로 계산합니다.</li><li>초기 정착비 500만원은 주거 보증금·중개비·필수 준비물의 계획값이며 개인 항공, 반려동물, 의료 및 사적 소비는 포함하지 않습니다.</li><li>장학금·이자·투자수익·환전수수료·긴급귀국비는 포함하지 않았습니다. 최소 3–6개월 생활비의 별도 비상자금을 권장합니다.</li></ul><div class="notice"><strong>자산관리 원칙</strong><div>1년 안에 납부할 학비와 생활비는 가격 변동이 큰 자산과 분리해 현금성 자산으로 관리하고, 실제 송금 전에는 대학 인보이스와 최신 환율을 다시 확인하세요. 이 계산은 재무 자문이 아닌 예산 도구입니다.</div></div></section>
+      </article>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><div><strong>SEMMELWEIS PHARM GUIDE</strong><p>세멜바이즈 약학대학 유학생을 위한 비공식 한국어 가이드</p></div><div><div class="footer-links" data-nav></div><p>© <span data-year></span> · 최종 결정 전 대학 공식 공지를 확인하세요.</p></div></div></footer>
+  <script src="assets/site.js"></script><script src="assets/costs.js"></script>
+</body>
+</html>
