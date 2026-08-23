@@ -37,13 +37,13 @@
       <article>
         <section id="calculator" class="article-section">
           <span class="tag">EDITABLE PLAN</span><h2>우리 집의 가정으로 다시 계산</h2>
-          <p>아래 값은 모두 수정할 수 있습니다. 생활비는 월세와 월 생활자금을 합한 범위로 입력하고, 초기 정착비에는 보증금·중개비·필수 물품처럼 첫해에만 필요한 현금을 넣으세요.</p>
+          <p>아래 값은 모두 수정할 수 있습니다. 기본 월 생활비는 월세 120–150만원과 식비·교통·통신 등 80–100만원을 합친 <strong>200–250만원</strong>으로 조정했습니다. 초기 정착비에는 보증금·중개비·필수 물품처럼 첫해에만 필요한 현금을 넣으세요.</p>
           <form id="cost-form" class="cost-controls">
             <div class="cost-field"><label for="usdKrw">USD 환율</label><div><input id="usdKrw" name="usdKrw" type="number" min="1" step="1" value="1465">원</div></div>
             <div class="cost-field"><label for="tuitionUsd">학기 등록금</label><div><input id="tuitionUsd" name="tuitionUsd" type="number" min="0" step="10" value="6620">USD</div></div>
             <div class="cost-field"><label for="annualInflation">연 물가상승률</label><div><input id="annualInflation" name="annualInflation" type="number" min="0" max="30" step="0.5" value="3">%</div></div>
-            <div class="cost-field"><label for="monthlyMin">월 생활비 최소</label><div><input id="monthlyMin" name="monthlyMin" type="number" min="0" step="10000" value="3000000">원</div></div>
-            <div class="cost-field"><label for="monthlyMax">월 생활비 최대</label><div><input id="monthlyMax" name="monthlyMax" type="number" min="0" step="10000" value="3500000">원</div></div>
+            <div class="cost-field"><label for="monthlyMin">월 생활비 최소</label><div><input id="monthlyMin" name="monthlyMin" type="number" min="0" step="10000" value="2000000">원</div></div>
+            <div class="cost-field"><label for="monthlyMax">월 생활비 최대</label><div><input id="monthlyMax" name="monthlyMax" type="number" min="0" step="10000" value="2500000">원</div></div>
             <div class="cost-field"><label for="initialSetup">초기 정착비</label><div><input id="initialSetup" name="initialSetup" type="number" min="0" step="10000" value="5000000">원</div></div>
           </form>
           <button id="reset-costs" class="btn secondary" type="button">기본값으로 초기화</button>
@@ -57,8 +57,8 @@
         <nav class="table-tabs" aria-label="비용표 바로가기"><a href="#yearly">학년·연도별</a><a href="#semester">학기별</a><a href="#monthly">월별 60개월</a></nav>
         <section id="yearly" class="article-section"><h2>학년·연도별 자금 계획</h2><div class="table-wrap"><table><thead><tr><th>학년</th><th>학년도</th><th>연 등록금</th><th>재료비</th><th>12개월 생활비</th><th>초기 정착</th><th>연간 합계</th></tr></thead><tbody id="yearly-body"></tbody></table></div></section>
         <section id="semester" class="article-section"><h2>학기별 확보 목표</h2><p>각 학기는 현금흐름 계획을 위해 6개월로 나눴습니다. 등록금은 학기 시작 전 납부 시점을 고려해 별도 확보하세요.</p><div class="table-wrap"><table><thead><tr><th>학기</th><th>학년도</th><th>등록금</th><th>재료비</th><th>6개월 생활비</th><th>학기 합계</th></tr></thead><tbody id="semester-body"></tbody></table></div></section>
-        <section id="monthly" class="article-section"><h2>월별 60개월 생활자금</h2><p>학비·재료비·초기 정착비를 제외한 생활비 표입니다. 매월 실제 지출을 기록하고 다음 학기 예상치를 조정하세요.</p><div class="table-wrap"><table><thead><tr><th>학년</th><th>학년도</th><th>월</th><th>계획 학기</th><th>월 생활비 범위</th></tr></thead><tbody id="monthly-body"></tbody></table></div></section>
-        <section id="assumptions" class="article-section"><h2>산정 기준과 사용 원칙</h2><ul class="assumption-list"><li>기본 환율 1,465원/USD는 업로드된 2026년 7월 비용표의 적용 환율입니다.</li><li>월 생활비 기본 범위는 비용표의 월세 120–150만원과 월 생활자금 180–200만원을 합산했습니다.</li><li>학기 등록금은 업로드된 신입생 공식 안내의 약학대학 USD 6,620을 사용했습니다. 첫 송금액처럼 보증금이 차감된 잔액과 혼동하지 마세요.</li><li>재료비는 업로드 자료를 따라 1학년 없음, 2학년 연 USD 800, 3–5학년 연 USD 1,600으로 계산합니다.</li><li>초기 정착비 500만원은 주거 보증금·중개비·필수 준비물의 계획값이며 개인 항공, 반려동물, 의료 및 사적 소비는 포함하지 않습니다.</li><li>장학금·이자·투자수익·환전수수료·긴급귀국비는 포함하지 않았습니다. 최소 3–6개월 생활비의 별도 비상자금을 권장합니다.</li></ul><div class="notice"><strong>자산관리 원칙</strong><div>1년 안에 납부할 학비와 생활비는 가격 변동이 큰 자산과 분리해 현금성 자산으로 관리하고, 실제 송금 전에는 대학 인보이스와 최신 환율을 다시 확인하세요. 이 계산은 재무 자문이 아닌 예산 도구입니다.</div></div></section>
+        <section id="monthly" class="article-section"><h2>월별 60개월 생활자금</h2><p>학비·재료비·초기 정착비를 제외한 <strong>기본 생활비</strong> 표입니다. 개인 용돈과 여행·쇼핑 같은 선택 지출은 포함하지 않았습니다. 매월 실제 지출을 기록하고 다음 학기 예상치를 조정하세요.</p><div class="table-wrap"><table><thead><tr><th>학년</th><th>학년도</th><th>월</th><th>계획 학기</th><th>월 생활비 범위</th></tr></thead><tbody id="monthly-body"></tbody></table></div></section>
+        <section id="assumptions" class="article-section"><h2>산정 기준과 사용 원칙</h2><ul class="assumption-list"><li>기본 환율 1,465원/USD는 업로드된 2026년 7월 비용표의 적용 환율입니다.</li><li>기존 300–350만원은 월세와 개인 용돈 계획을 단순 합산해 기본 생활비로 보기에는 높았습니다. 수정 기본값은 월세 120–150만원에 식비·교통·통신 등 80–100만원을 더한 월 200–250만원입니다.</li><li>개인 용돈, 여행, 쇼핑 등 선택 지출은 기본 생활비에서 제외하고 필요하면 별도 예산으로 관리합니다.</li><li>학기 등록금은 업로드된 신입생 공식 안내의 약학대학 USD 6,620을 사용했습니다. 첫 송금액처럼 보증금이 차감된 잔액과 혼동하지 마세요.</li><li>재료비는 업로드 자료를 따라 1학년 없음, 2학년 연 USD 800, 3–5학년 연 USD 1,600으로 계산합니다.</li><li>초기 정착비 500만원은 주거 보증금·중개비·필수 준비물의 계획값이며 개인 항공, 반려동물, 의료 및 사적 소비는 포함하지 않습니다.</li><li>장학금·이자·투자수익·환전수수료·긴급귀국비는 포함하지 않았습니다. 최소 3–6개월 생활비의 별도 비상자금을 권장합니다.</li></ul><div class="notice"><strong>자산관리 원칙</strong><div>1년 안에 납부할 학비와 생활비는 가격 변동이 큰 자산과 분리해 현금성 자산으로 관리하고, 실제 송금 전에는 대학 인보이스와 최신 환율을 다시 확인하세요. 이 계산은 재무 자문이 아닌 예산 도구입니다.</div></div></section>
       </article>
     </div>
   </main>

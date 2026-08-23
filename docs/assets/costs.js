@@ -1,4 +1,4 @@
-const costDefaults = { usdKrw: 1465, tuitionUsd: 6620, monthlyMin: 3000000, monthlyMax: 3500000, initialSetup: 5000000, annualInflation: 3 };
+const costDefaults = { usdKrw: 1465, tuitionUsd: 6620, monthlyMin: 2000000, monthlyMax: 2500000, initialSetup: 5000000, annualInflation: 3 };
 const materialFees = [0, 800, 1600, 1600, 1600];
 const academicYears = ['2026/27', '2027/28', '2028/29', '2029/30', '2030/31'];
 const won = new Intl.NumberFormat('ko-KR', { maximumFractionDigits: 0 });
