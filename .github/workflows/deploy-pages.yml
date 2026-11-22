@@ -1,0 +1,71 @@
+name: Build and Deploy Pages
+
+# docs/config/access.json is regenerated at build time from repository
+# Actions variables (Settings → Secrets and variables → Actions → Variables),
+# so the access code(s) can be rotated without editing a file or committing
+# a new SHA-256 hash by hand. If a variable is not set, the workflow falls
+# back to the defaults committed in the repo.
+#
+# Variables used (optional):
+#   ACCESS_CODE_1 - first valid access code (default: hjoon0510)
+#   ACCESS_CODE_2 - second valid access code (default: guest2848)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate docs/config/access.json
+        env:
+          ACCESS_CODE_1: ${{ vars.ACCESS_CODE_1 }}
+          ACCESS_CODE_2: ${{ vars.ACCESS_CODE_2 }}
+        run: |
+          node -e '
+            const crypto = require("crypto");
+            const fs = require("fs");
+            const code1 = process.env.ACCESS_CODE_1 || "hjoon0510";
+            const code2 = process.env.ACCESS_CODE_2 || "guest2848";
+            const hash = (v) => crypto.createHash("sha256").update(v).digest("hex");
+            const config = {
+              algorithm: "SHA-256",
+              digests: [hash(code1), hash(code2)],
+              version: Date.now(),
+            };
+            fs.writeFileSync("docs/config/access.json", JSON.stringify(config, null, 2) + "\n");
+            console.log("Wrote docs/config/access.json with", config.digests.length, "digest(s).");
+          '
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
